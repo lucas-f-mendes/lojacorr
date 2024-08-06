@@ -1,0 +1,34 @@
+version: '3.8'
+
+services:
+  app:
+    image: lojacorr:development
+    build: .
+    depends_on:
+      - mysql
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - .:/var/www/html
+
+  mysql:
+    image: mysql:latest
+    ports:
+      - 3306:3306
+    volumes:
+      - ./mysql-data:/var/lib/mysql
+    environment:
+      MYSQL_DATABASE: lojacorr_db
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_PASSWORD: root
+    
+  phpmyadmin:
+    depends_on: 
+      - mysql
+    image: phpmyadmin/phpmyadmin
+    ports:
+      - 8080:80
+    environment:
+      - PMA_HOST=mysql
+      - PMA_PORT=3306
