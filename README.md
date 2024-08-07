@@ -11,15 +11,15 @@ Projeto Laravel
 - Para levantar o ambiente, rode os seguintes comandos:
 
 ```
-  docker-compode build --no-cache
+  docker-compose build --no-cache
 ```
 
 ```
-  docker-compode up -d
+  docker-compose up -d
 ```
 
 ```
-  docker-compode exec app bash
+  docker-compose exec app bash
 ```
 
 ```
