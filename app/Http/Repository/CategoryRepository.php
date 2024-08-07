@@ -15,4 +15,14 @@ class CategoryRepository extends CategoryManager
             ->limit(1)
             ->first();
     }
+
+    public function getCategoryById($request)
+    {
+        return $this->getManager()
+            ->select("id")
+            ->where("uuid", $request->category_id)
+            ->orWhere("id", $request->category_id)
+            ->limit(1)
+            ->first();
+    }
 }
