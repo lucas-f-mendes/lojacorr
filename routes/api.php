@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\CategoryController;
+use App\Http\Controllers\Api\ProductController;
 use App\Http\Controllers\Api\SubcategoryController;
 use App\Http\Controllers\Api\AuthController;
 use Illuminate\Support\Facades\Route;
@@ -33,6 +34,14 @@ Route::prefix("v1")->group(function () {
                 Route::delete("subcategories/{id}", "destroy")->name("api.subcategory.destroy");
                 Route::match(["patch", "put"], "subcategories/{id}", "update")->name("api.subcategory.update");
             });
+        });
+
+        Route::controller(ProductController::class)->group(function () {
+            Route::get("products", "index")->name("api.product.index");
+            Route::get("products/{id}", "show")->name("api.product.show");
+            Route::post("products", "create")->name("api.product.create");
+            Route::delete("products/{id}", "destroy")->name("api.product.destroy");
+            Route::match(["patch", "put"], "products/{id}", "update")->name("api.product.update");
         });
     });
 });
