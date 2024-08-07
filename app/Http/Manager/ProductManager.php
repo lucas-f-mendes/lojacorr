@@ -5,6 +5,7 @@ namespace App\Http\Manager;
 use App\Enum\MessagesEnum;
 use Illuminate\Support\Str;
 use Exception;
+use Illuminate\Http\Response;
 
 class ProductManager extends AbstractManager
 {
@@ -24,7 +25,7 @@ class ProductManager extends AbstractManager
         $category = $this->getRepository("category")->getCategoryById($request);
 
         if (is_null($category) === true) {
-            return throw new Exception(MessagesEnum::REGISTER_NOT_FOUND);
+            return throw new Exception(MessagesEnum::REGISTER_NOT_FOUND, Response::HTTP_BAD_REQUEST);
         }
 
         $product->category_id = (int) $category->id;
@@ -71,7 +72,7 @@ class ProductManager extends AbstractManager
             $category = $this->getRepository("category")->getCategoryById($request);
 
             if (is_null($category) === true) {
-                return throw new Exception(MessagesEnum::ERROR_HAS_OCURRED);
+                return throw new Exception(MessagesEnum::ERROR_HAS_OCURRED, Response::HTTP_BAD_REQUEST);
             }
 
             $product->category_id = (int) $category->id;
