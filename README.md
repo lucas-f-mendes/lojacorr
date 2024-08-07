@@ -58,7 +58,8 @@ https://www.postman.com/warped-crater-633576/workspace/lojacorr/collection/31942
 
 Quis trazer a base do problema com uma visão de solução um pouco diferente do que foi solicitado.
 
-Baseado na arquitetura Repository, tambem trouxe apenas um model e uma tabela que contempla tanto a Categoria como a Subcategoria, simplificando a complexidade.
+Baseado no padrão Repository, tambem trouxe apenas um model e uma tabela que contempla tanto a Categoria como a Subcategoria, e outra model referente a Produto. Uma resolução um pouco mais complexa, mas que abrange bastante tópicos do laravel e traz um pouco de um cenário real.
+
 ## Portas
 
 :80 - web
